@@ -1,0 +1,9 @@
+button {
+    padding: 10px;
+    margin: 5px;
+    color: white;
+}
+
+.btn-start {
+    background-color: green;
+}
