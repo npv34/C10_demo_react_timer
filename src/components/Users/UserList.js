@@ -69,7 +69,8 @@ function UserList() {
 
     return (
         <>
-            <div style={{ height: 400, width: '50%' }}>
+            <Button variant="contained">Create</Button>
+            <div style={{ height: 100 * data.length, width: '50%' }}>
             { data && (
                 <DataGrid
                     rows={data}
