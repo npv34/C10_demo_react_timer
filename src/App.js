@@ -1,14 +1,12 @@
 import './App.css';
 import { Container, Row, Col } from 'react-bootstrap';
 import NavbarHead from "./components/Navbar/NavbarHead";
-import Todos from "./components/Todos/Todos";
-
+import UserList from "./components/github/Users/UserList";
 function App() {
-    const page = 'Todo app'
-
-  return (
+    const page = 'Todo app';
+    return (
     <>
-        <Container>
+            <Container>
             <Row>
                 <Col>
                     <NavbarHead pageTitle={page}/>
@@ -17,7 +15,7 @@ function App() {
             </Row>
             <Row>
                 <Col>
-                    <Todos/>
+                    <UserList/>
                 </Col>
             </Row>
         </Container>

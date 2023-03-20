@@ -2,7 +2,8 @@ import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import {Button, Table} from "react-bootstrap";
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import Item from "./Item/Item";
 
 let tasks = [
     {
@@ -38,8 +39,10 @@ function Todos(props) {
         setTodos([...todos, task])
     }
 
-    const completeTask = (index) => {
-        todos[index].complete = true;
+    const completeTask = (id) => {
+        let item = todos.filter(todo => todo.id == id);
+        item[0].complete = true;
+        console.log(todos)
         setTodos([...todos])
     }
 
@@ -61,17 +64,7 @@ function Todos(props) {
                         </thead>
                         <tbody>
                         { todos.map((item,index) => (
-                            <tr>
-                                <td>{index + 1}</td>
-                                <td>{item.title}</td>
-                                <td>
-                                    { !item.complete ? (
-                                        <Button onClick={() => completeTask(index)}>Complete</Button>
-                                    ) : (
-                                        <Button variant="danger">Delete</Button>
-                                    )}
-                                </td>
-                            </tr>
+                            <Item key={index} index={index} item={item} completeTask={completeTask} />
                         ))}
                         </tbody>
                     </Table>
