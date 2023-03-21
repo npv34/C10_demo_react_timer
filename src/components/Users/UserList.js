@@ -1,7 +1,11 @@
 import './UserList.css'
 import {useState} from "react";
 import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
-import {Button} from "@mui/material";
+import {
+    Button,
+} from "@mui/material";
+
+import UserAdd from "./UserAdd/UserAdd";
 
 let users = [
     {
@@ -26,6 +30,8 @@ let users = [
         phone: '000908787'
     }
 ]
+
+
 
 function UserList() {
 
@@ -55,6 +61,19 @@ function UserList() {
                 return <Button onClick={(e)  => onClick(e)} variant="outlined" color="error">Delete</Button>
             }},
     ];
+    const [open, setOpen] = useState(false);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+    const handleAddUser = (dataForm) => {
+        setData([...data, dataForm])
+    }
 
     const deleteUser = (id) => {
         // eslint-disable-next-line no-restricted-globals
@@ -69,8 +88,8 @@ function UserList() {
 
     return (
         <>
-            <Button variant="contained">Create</Button>
-            <div style={{ height: 100 * data.length, width: '50%' }}>
+            <Button variant="contained" onClick={handleClickOpen}>Create</Button>
+            <div style={{ height: 100 * data.length, width: '80%' }}>
             { data && (
                 <DataGrid
                     rows={data}
@@ -81,6 +100,7 @@ function UserList() {
                 />
             )}
             </div>
+            <UserAdd open={open} handleClose={handleClose} addUser={handleAddUser}/>
 
         </>
     )

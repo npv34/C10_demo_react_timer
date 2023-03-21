@@ -1,7 +1,7 @@
 import './App.css';
 import { Container, Row, Col } from 'react-bootstrap';
 import NavbarHead from "./components/Navbar/NavbarHead";
-import UserList from "./components/github/Users/UserList";
+import UserList from "./components/Users/UserList";
 function App() {
     const page = 'Todo app';
     return (
